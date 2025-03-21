@@ -1,6 +1,6 @@
 # TypeScript Type-Level Mathematics
 
-A type-level mathematics library that performs compile-time arithmetic operations using TypeScript's type system. This project demonstrates how TypeScript's advanced type features can be leveraged to execute mathematical operations without runtime code.
+A type-level mathematics library that performs compile-time arithmetic operations using TypeScript's type system. This project demonstrates how TypeScript's type system can be used to execute mathematical operations without runtime code.
 
 ## Limitations
 
