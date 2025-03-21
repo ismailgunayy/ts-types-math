@@ -1,0 +1,24 @@
+{
+	"name": "ts-types-math",
+	"version": "1.0.0",
+	"description": "Math operations running on TS types",
+	"author": "ismailgunayy",
+	"license": "MIT",
+	"main": "src/index.ts",
+	"type": "module",
+	"keywords": [
+		"typescript",
+		"types"
+	],
+	"scripts": {
+		"check-types": "tsc; rimraf ./dist",
+		"clean": "rimraf ./dist"
+	},
+	"devDependencies": {
+		"@types/node": "^22.13.9",
+		"rimraf": "^6.0.1",
+		"tsx": "^4.19.3",
+		"typescript": "^5.8.2"
+	},
+	"packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+}
