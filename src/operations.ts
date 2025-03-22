@@ -1,82 +1,82 @@
 import { IsZero } from "./predicates";
 
-type Calculate<A extends unknown[]> = A["length"];
+type Calculate<X extends unknown[]> = X["length"];
 
-type AddOp<A extends unknown[], B extends unknown[]> = [...A, ...B];
+type AddOp<X extends unknown[], Y extends unknown[]> = [...X, ...Y];
 
-export type Add<A extends unknown[], B extends unknown[]> = Calculate<
-	AddOp<A, B>
+export type Add<X extends unknown[], Y extends unknown[]> = Calculate<
+	AddOp<X, Y>
 >;
 
 type SubtractOp<
-	A extends unknown[],
-	B extends unknown[]
-> = IsZero<B> extends true
-	? A
-	: A extends [unknown, ...infer RestA]
-	? B extends [unknown, ...infer RestB]
-		? SubtractOp<RestA, RestB>
+	X extends unknown[],
+	Y extends unknown[]
+> = IsZero<Y> extends true
+	? X
+	: X extends [unknown, ...infer RestX]
+	? Y extends [unknown, ...infer RestY]
+		? SubtractOp<RestX, RestY>
 		: never
 	: never;
 
-export type Subtract<A extends unknown[], B extends unknown[]> = Calculate<
-	SubtractOp<A, B>
+export type Subtract<X extends unknown[], Y extends unknown[]> = Calculate<
+	SubtractOp<X, Y>
 >;
 
 type MultiplyOp<
-	A extends unknown[],
-	B extends unknown[],
+	X extends unknown[],
+	Y extends unknown[],
 	Result extends unknown[] = []
-> = IsZero<B> extends true
+> = IsZero<Y> extends true
 	? Result
-	: B extends [unknown, ...infer RestB]
-	? MultiplyOp<A, RestB, [...Result, ...A]>
+	: Y extends [unknown, ...infer RestY]
+	? MultiplyOp<X, RestY, [...Result, ...X]>
 	: never;
 
-export type Multiply<A extends unknown[], B extends unknown[]> = Calculate<
-	MultiplyOp<A, B>
+export type Multiply<X extends unknown[], Y extends unknown[]> = Calculate<
+	MultiplyOp<X, Y>
 >;
 
 type DivideOp<
-	A extends unknown[],
-	B extends unknown[],
+	X extends unknown[],
+	Y extends unknown[],
 	Result extends unknown[] = []
-> = IsZero<B> extends true
+> = IsZero<Y> extends true
 	? never
-	: IsZero<A> extends true
+	: IsZero<X> extends true
 	? Result
-	: SubtractOp<A, B> extends never
+	: SubtractOp<X, Y> extends never
 	? Result
-	: DivideOp<SubtractOp<A, B>, B, [unknown, ...Result]>;
+	: DivideOp<SubtractOp<X, Y>, Y, [unknown, ...Result]>;
 
-export type Divide<A extends unknown[], B extends unknown[]> = Calculate<
-	DivideOp<A, B>
+export type Divide<X extends unknown[], Y extends unknown[]> = Calculate<
+	DivideOp<X, Y>
 >;
 
 type PowerOp<
-	A extends unknown[],
-	B extends unknown[],
+	X extends unknown[],
+	Y extends unknown[],
 	Result extends unknown[] = [unknown]
-> = IsZero<A> extends true
-	? IsZero<B> extends true
+> = IsZero<X> extends true
+	? IsZero<Y> extends true
 		? never
 		: []
-	: IsZero<B> extends true
+	: IsZero<Y> extends true
 	? Result
-	: B extends [unknown, ...infer RestB]
-	? PowerOp<A, RestB, MultiplyOp<Result, A>>
+	: Y extends [unknown, ...infer RestY]
+	? PowerOp<X, RestY, MultiplyOp<Result, X>>
 	: never;
 
-export type Power<A extends unknown[], B extends unknown[]> = Calculate<
-	PowerOp<A, B>
+export type Power<X extends unknown[], Y extends unknown[]> = Calculate<
+	PowerOp<X, Y>
 >;
 
-type ModOp<A extends unknown[], B extends unknown[]> = IsZero<B> extends true
+type ModOp<X extends unknown[], Y extends unknown[]> = IsZero<Y> extends true
 	? never
-	: SubtractOp<A, B> extends never
-	? A
-	: ModOp<SubtractOp<A, B>, B>;
+	: SubtractOp<X, Y> extends never
+	? X
+	: ModOp<SubtractOp<X, Y>, Y>;
 
-export type Mod<A extends unknown[], B extends unknown[]> = Calculate<
-	ModOp<A, B>
+export type Mod<X extends unknown[], Y extends unknown[]> = Calculate<
+	ModOp<X, Y>
 >;

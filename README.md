@@ -1,6 +1,6 @@
 # TypeScript Type-Level Mathematics
 
-A library that performs arithmetic operations purely within TypeScript's type system, with calculations happening only during type checking in the TypeScript Language Server.
+X library that performs arithmetic operations purely within TypeScript's type system, with calculations happening only during type checking in the TypeScript Language Server.
 
 ## Limitations
 
@@ -9,24 +9,24 @@ A library that performs arithmetic operations purely within TypeScript's type sy
 
 ## Available Operations
 
-- `Add<A, B>`
-- `Subtract<A, B>`
-- `Multiply<A, B>`
-- `Divide<A, B>`
-- `Power<A, B>`
-- `Mod<A, B>`
+- `Add<X, Y>`
+- `Subtract<X, Y>`
+- `Multiply<X, Y>`
+- `Divide<X, Y>`
+- `Power<X, Y>`
+- `Mod<X, Y>`
 
 ## Available Predicates
 
-- `IsEqual<A, B>`
-- `GreaterThan<A, B>`
-- `GreaterThanOrEqual<A, B>`
-- `LessThan<A, B>`
-- `LessThanOrEqual<A, B>`
-- `IsZero<A>`
-- `IsEven<A>`
-- `IsOdd<A>`
-- `IsInRange<A, RangeStart, RangeEnd>`
+- `IsEqual<X, Y>`
+- `GreaterThan<X, Y>`
+- `GreaterThanOrEqual<X, Y>`
+- `LessThan<X, Y>`
+- `LessThanOrEqual<X, Y>`
+- `IsZero<X>`
+- `IsEven<X>`
+- `IsOdd<X>`
+- `IsInRange<X, RangeStart, RangeEnd>`
 
 ## Examples
 

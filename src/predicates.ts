@@ -1,76 +1,76 @@
 import { Num } from "./number";
 import { Mod } from "./operations";
 
-export type IsEqual<A extends unknown[], B extends unknown[]> = A extends B
-	? B extends A
+export type IsEqual<X extends unknown[], Y extends unknown[]> = X extends Y
+	? Y extends X
 		? true
 		: false
 	: false;
 
-export type GreaterThan<A extends unknown[], B extends unknown[]> = IsEqual<
-	A,
-	B
+export type GreaterThan<X extends unknown[], Y extends unknown[]> = IsEqual<
+	X,
+	Y
 > extends true
 	? false
-	: A extends []
+	: X extends []
 	? false
-	: B extends []
+	: Y extends []
 	? true
-	: A extends [unknown, ...infer RestA]
-	? B extends [unknown, ...infer RestB]
-		? GreaterThan<RestA, RestB>
+	: X extends [unknown, ...infer RestX]
+	? Y extends [unknown, ...infer RestY]
+		? GreaterThan<RestX, RestY>
 		: never
 	: never;
 
 export type GreaterThanOrEqual<
-	A extends unknown[],
-	B extends unknown[]
-> = IsEqual<A, B> extends true
+	X extends unknown[],
+	Y extends unknown[]
+> = IsEqual<X, Y> extends true
 	? true
-	: GreaterThan<A, B> extends true
+	: GreaterThan<X, Y> extends true
 	? true
 	: false;
 
-export type LessThan<A extends unknown[], B extends unknown[]> = IsEqual<
-	A,
-	B
+export type LessThan<X extends unknown[], Y extends unknown[]> = IsEqual<
+	X,
+	Y
 > extends true
 	? false
-	: A extends []
+	: X extends []
 	? true
-	: B extends []
+	: Y extends []
 	? false
-	: A extends [unknown, ...infer RestA]
-	? B extends [unknown, ...infer RestB]
-		? LessThan<RestA, RestB>
+	: X extends [unknown, ...infer RestX]
+	? Y extends [unknown, ...infer RestY]
+		? LessThan<RestX, RestY>
 		: never
 	: never;
 
-export type LessThanOrEqual<A extends unknown[], B extends unknown[]> = IsEqual<
-	A,
-	B
+export type LessThanOrEqual<X extends unknown[], Y extends unknown[]> = IsEqual<
+	X,
+	Y
 > extends true
 	? true
-	: LessThan<A, B> extends true
+	: LessThan<X, Y> extends true
 	? true
 	: false;
 
-export type IsZero<A extends unknown[]> = A extends [] ? true : false;
+export type IsZero<X extends unknown[]> = X extends [] ? true : false;
 
-export type IsEven<A extends unknown[]> = Mod<A, Num<2>> extends 0
+export type IsEven<X extends unknown[]> = Mod<X, Num<2>> extends 0
 	? true
 	: false;
 
-export type IsOdd<A extends unknown[]> = Mod<A, Num<2>> extends 1
+export type IsOdd<X extends unknown[]> = Mod<X, Num<2>> extends 1
 	? true
 	: false;
 
 export type IsInRange<
-	A extends unknown[],
+	X extends unknown[],
 	RangeStart extends unknown[],
 	RangeEnd extends unknown[]
-> = GreaterThanOrEqual<A, RangeStart> extends true
-	? LessThanOrEqual<A, RangeEnd> extends true
+> = GreaterThanOrEqual<X, RangeStart> extends true
+	? LessThanOrEqual<X, RangeEnd> extends true
 		? true
 		: false
 	: false;
