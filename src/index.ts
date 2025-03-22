@@ -14,7 +14,7 @@ type _8Minus3 = Subtract<Num<8>, Num<3>>; // Inferred as 5
 // Multiplication
 type _4Times4 = Multiply<Num<4>, Num<4>>; // Inferred as 16
 type _5Times0 = Multiply<Num<5>, Num<0>>; // Inferred as 0
-type _999Times999 = Multiply<Num<99>, Num<101>>; // Inferred as 9999
+type _99Times101 = Multiply<Num<99>, Num<101>>; // Inferred as 9999
 
 // Division
 type _4Over4 = Divide<Num<4>, Num<4>>; // Inferred as 1
