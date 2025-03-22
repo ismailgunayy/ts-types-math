@@ -38,10 +38,28 @@ type DivideOp<
 	Result extends unknown[] = []
 > = A extends []
 	? Result
-	: Subtract<A, B> extends never
+	: SubtractOp<A, B> extends never
 	? Result
 	: DivideOp<SubtractOp<A, B>, B, [unknown, ...Result]>;
 
 export type Divide<A extends unknown[], B extends unknown[]> = Calculate<
 	DivideOp<A, B>
+>;
+
+type PowerOp<
+	A extends unknown[],
+	B extends unknown[],
+	Result extends unknown[] = [unknown]
+> = A extends []
+	? B extends []
+		? never
+		: []
+	: B extends []
+	? Result
+	: B extends [unknown, ...infer RestB]
+	? PowerOp<A, RestB, MultiplyOp<Result, A>>
+	: never;
+
+export type Power<A extends unknown[], B extends unknown[]> = Calculate<
+	PowerOp<A, B>
 >;
