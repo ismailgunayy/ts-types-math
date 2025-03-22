@@ -12,6 +12,10 @@ A library that performs arithmetic operations purely within TypeScript's type sy
 Here's what the TypeScript compiler infers for our examples:
 
 ```typescript
+/**
+ * OPERATIONS
+ */
+
 // Addition
 type _4Plus4 = Add<Num<4>, Num<4>>; // Inferred as 8
 type _999Plus999 = Add<Num<999>, Num<999>>; // Inferred as 1998
@@ -30,6 +34,16 @@ type _99Times101 = Multiply<Num<99>, Num<101>>; // Inferred as 9999
 type _4Over4 = Divide<Num<4>, Num<4>>; // Inferred as 1
 type _9Over4 = Divide<Num<9>, Num<4>>; // Inferred as 2
 type _0Over4 = Divide<Num<0>, Num<4>>; // Inferred as 0
+
+// Power
+type _0ToThe0th = Power<Num<0>, Num<0>>; // Inferred as never
+type _0ToThe5th = Power<Num<0>, Num<5>>; // Inferred as 0
+type _6ToThe0th = Power<Num<6>, Num<0>>; // Inferred as 1
+type _3ToThe4th = Power<Num<3>, Num<4>>; // Inferred as 81
+
+/**
+ * COMPARISONS
+ */
 
 // IsEqual
 type _4Equals4 = IsEqual<Num<4>, Num<4>>; // Inferred as true
