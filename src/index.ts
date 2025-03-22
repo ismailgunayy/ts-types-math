@@ -18,7 +18,7 @@ type _999Times999 = Multiply<Num<99>, Num<101>>; // Inferred as 9999
 
 // Division
 type _4Over4 = Divide<Num<4>, Num<4>>; // Inferred as 1
-type _5Over0 = Divide<Num<5>, Num<1>>; // Inferred as 5
+type _9Over4 = Divide<Num<9>, Num<4>>; // Inferred as 2
 type _0Over4 = Divide<Num<0>, Num<4>>; // Inferred as 0
 
 // IsEqual
