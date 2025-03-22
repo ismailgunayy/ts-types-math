@@ -1,6 +1,6 @@
 import { GreaterThan, IsEqual, LessThan } from "./comparisons";
 import { Num } from "./number";
-import { Add, Divide, Multiply, Power, Subtract } from "./operations";
+import { Add, Divide, Mod, Multiply, Power, Subtract } from "./operations";
 
 /**
  * OPERATIONS
@@ -30,6 +30,11 @@ type _0ToThe0th = Power<Num<0>, Num<0>>; // Inferred as never
 type _0ToThe5th = Power<Num<0>, Num<5>>; // Inferred as 0
 type _6ToThe0th = Power<Num<6>, Num<0>>; // Inferred as 1
 type _3ToThe4th = Power<Num<3>, Num<4>>; // Inferred as 81
+
+// Mod
+type _1Mod0 = Mod<Num<1>, Num<0>>; // Inferred as never
+type _10Mod3 = Mod<Num<10>, Num<3>>; // Inferred as 1
+type _21Mod7 = Mod<Num<21>, Num<7>>; // Inferred as 0
 
 /**
  * COMPARISONS

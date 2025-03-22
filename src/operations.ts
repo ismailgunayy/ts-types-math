@@ -63,3 +63,13 @@ type PowerOp<
 export type Power<A extends unknown[], B extends unknown[]> = Calculate<
 	PowerOp<A, B>
 >;
+
+type ModOp<A extends unknown[], B extends unknown[]> = B extends []
+	? never
+	: SubtractOp<A, B> extends never
+	? A
+	: ModOp<SubtractOp<A, B>, B>;
+
+export type Mod<A extends unknown[], B extends unknown[]> = Calculate<
+	ModOp<A, B>
+>;
