@@ -11,6 +11,7 @@ import {
 	LessThan,
 	LessThanOrEqual,
 } from "./predicates";
+
 /**
  * OPERATIONS
  */

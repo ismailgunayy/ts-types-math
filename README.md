@@ -52,6 +52,7 @@ type _5Times0 = Multiply<Num<5>, Num<0>>; // Inferred as 0
 type _99Times101 = Multiply<Num<99>, Num<101>>; // Inferred as 9999
 
 // Division
+type _3Over0 = Divide<Num<3>, Num<0>>; // Inferred as never
 type _4Over4 = Divide<Num<4>, Num<4>>; // Inferred as 1
 type _9Over4 = Divide<Num<9>, Num<4>>; // Inferred as 2
 type _0Over4 = Divide<Num<0>, Num<4>>; // Inferred as 0
@@ -73,10 +74,44 @@ type _21Mod7 = Mod<Num<21>, Num<7>>; // Inferred as 0
 
 // IsEqual
 type _4Equals4 = IsEqual<Num<4>, Num<4>>; // Inferred as true
+type _4Equals5 = IsEqual<Num<4>, Num<5>>; // Inferred as false
 
 // GreaterThan
 type _5GreaterThan3 = GreaterThan<Num<5>, Num<3>>; // Inferred as true
+type _3GreaterThan5 = GreaterThan<Num<3>, Num<5>>; // Inferred as false
+type _5GreaterThan5 = GreaterThan<Num<5>, Num<5>>; // Inferred as false
+
+// GreaterThanOrEqual
+type _5GEQ3 = GreaterThanOrEqual<Num<5>, Num<3>>; // Inferred as true
+type _5GEQ5 = GreaterThanOrEqual<Num<5>, Num<5>>; // Inferred as true
+type _3GEQ5 = GreaterThanOrEqual<Num<3>, Num<5>>; // Inferred as false
 
 // LessThan
 type _3LessThan5 = LessThan<Num<3>, Num<5>>; // Inferred as true
+type _5LessThan3 = LessThan<Num<5>, Num<3>>; // Inferred as false
+type _5LessThan5 = LessThan<Num<5>, Num<5>>; // Inferred as false
+
+// LessThanOrEqual
+type _3LEQ5 = LessThanOrEqual<Num<3>, Num<5>>; // Inferred as true
+type _5LEQ5 = LessThanOrEqual<Num<5>, Num<5>>; // Inferred as true
+type _7LEQ5 = LessThanOrEqual<Num<7>, Num<5>>; // Inferred as false
+
+// IsZero
+type _0IsZero = IsZero<Num<0>>; // Inferred as true
+type _5IsZero = IsZero<Num<5>>; // Inferred as false
+
+// IsEven
+type _0IsEven = IsEven<Num<0>>; // Inferred as true
+type _2IsEven = IsEven<Num<2>>; // Inferred as true
+type _3IsEven = IsEven<Num<3>>; // Inferred as false
+
+// IsOdd
+type _3IsOdd = IsOdd<Num<3>>; // Inferred as true
+type _4IsOdd = IsOdd<Num<4>>; // Inferred as false
+
+// IsInRange
+type _5InRange3to10 = IsInRange<Num<5>, Num<3>, Num<10>>; // Inferred as true
+type _5InRange5to10 = IsInRange<Num<5>, Num<5>, Num<10>>; // Inferred as true
+type _5InRange0to5 = IsInRange<Num<5>, Num<0>, Num<5>>; // Inferred as true
+type _5InRange10to20 = IsInRange<Num<5>, Num<10>, Num<20>>; // Inferred as false
 ```
