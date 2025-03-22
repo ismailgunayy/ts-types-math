@@ -47,7 +47,7 @@ type _10Mod3 = Mod<Num<10>, Num<3>>; // Inferred as 1
 type _21Mod7 = Mod<Num<21>, Num<7>>; // Inferred as 0
 
 /**
- * COMPARISONS
+ * PREDICATES
  */
 
 // IsEqual
