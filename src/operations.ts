@@ -80,3 +80,14 @@ type ModOp<X extends unknown[], Y extends unknown[]> = IsZero<Y> extends true
 export type Mod<X extends unknown[], Y extends unknown[]> = Calculate<
 	ModOp<X, Y>
 >;
+
+type FactorialOp<
+	X extends unknown[],
+	Result extends unknown[] = [unknown]
+> = IsZero<X> extends true
+	? Result
+	: X extends [unknown, ...infer RestX]
+	? FactorialOp<RestX, MultiplyOp<Result, X>>
+	: never;
+
+export type Factorial<X extends unknown[]> = Calculate<FactorialOp<X>>;
