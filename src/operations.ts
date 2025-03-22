@@ -36,7 +36,9 @@ type DivideOp<
 	A extends unknown[],
 	B extends unknown[],
 	Result extends unknown[] = []
-> = A extends []
+> = B extends []
+	? never
+	: A extends []
 	? Result
 	: SubtractOp<A, B> extends never
 	? Result

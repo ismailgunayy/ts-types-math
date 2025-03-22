@@ -1,4 +1,4 @@
-import { GreaterThan, IsEqual, LessThan } from "./comparisons";
+import { GreaterThan, IsEqual, LessThan } from "./predicates";
 import { Num } from "./number";
 import { Add, Divide, Mod, Multiply, Power, Subtract } from "./operations";
 
@@ -21,6 +21,7 @@ type _5Times0 = Multiply<Num<5>, Num<0>>; // Inferred as 0
 type _99Times101 = Multiply<Num<99>, Num<101>>; // Inferred as 9999
 
 // Division
+type _3Over0 = Divide<Num<3>, Num<0>>; // Inferred as never
 type _4Over4 = Divide<Num<4>, Num<4>>; // Inferred as 1
 type _9Over4 = Divide<Num<9>, Num<4>>; // Inferred as 2
 type _0Over4 = Divide<Num<0>, Num<4>>; // Inferred as 0
@@ -37,7 +38,7 @@ type _10Mod3 = Mod<Num<10>, Num<3>>; // Inferred as 1
 type _21Mod7 = Mod<Num<21>, Num<7>>; // Inferred as 0
 
 /**
- * COMPARISONS
+ * PREDICATES
  */
 
 // IsEqual
