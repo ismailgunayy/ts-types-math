@@ -7,6 +7,27 @@ A library that performs arithmetic operations purely within TypeScript's type sy
 - **Range Constraints**: Limited to numbers within the range of TypeScript's tuple length limit (currently 999)
 - **Number Types**: Does not handle negative numbers or floating-point numbers
 
+## Available Operations
+
+- `Add<A, B>`
+- `Subtract<A, B>`
+- `Multiply<A, B>`
+- `Divide<A, B>`
+- `Power<A, B>`
+- `Mod<A, B>`
+
+## Available Predicates
+
+- `IsEqual<A, B>`
+- `GreaterThan<A, B>`
+- `GreaterThanOrEqual<A, B>`
+- `LessThan<A, B>`
+- `LessThanOrEqual<A, B>`
+- `IsZero<A>`
+- `IsEven<A>`
+- `IsOdd<A>`
+- `IsInRange<A, RangeStart, RangeEnd>`
+
 ## Examples
 
 Here's what the TypeScript compiler infers for our examples:
