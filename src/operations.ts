@@ -1,4 +1,4 @@
-import { IsZero } from "./predicates";
+import { GreaterThan, LessThan, Zero } from "./predicates";
 
 type Calculate<X extends unknown[]> = X["length"];
 
@@ -8,10 +8,7 @@ export type Add<X extends unknown[], Y extends unknown[]> = Calculate<
 	AddOp<X, Y>
 >;
 
-type SubtractOp<
-	X extends unknown[],
-	Y extends unknown[]
-> = IsZero<Y> extends true
+type SubtractOp<X extends unknown[], Y extends unknown[]> = Zero<Y> extends true
 	? X
 	: X extends [unknown, ...infer RestX]
 	? Y extends [unknown, ...infer RestY]
@@ -27,7 +24,7 @@ type MultiplyOp<
 	X extends unknown[],
 	Y extends unknown[],
 	Result extends unknown[] = []
-> = IsZero<Y> extends true
+> = Zero<Y> extends true
 	? Result
 	: Y extends [unknown, ...infer RestY]
 	? MultiplyOp<X, RestY, [...Result, ...X]>
@@ -41,9 +38,9 @@ type DivideOp<
 	X extends unknown[],
 	Y extends unknown[],
 	Result extends unknown[] = []
-> = IsZero<Y> extends true
+> = Zero<Y> extends true
 	? never
-	: IsZero<X> extends true
+	: Zero<X> extends true
 	? Result
 	: SubtractOp<X, Y> extends never
 	? Result
@@ -57,11 +54,11 @@ type PowerOp<
 	X extends unknown[],
 	Y extends unknown[],
 	Result extends unknown[] = [unknown]
-> = IsZero<X> extends true
-	? IsZero<Y> extends true
+> = Zero<X> extends true
+	? Zero<Y> extends true
 		? never
 		: []
-	: IsZero<Y> extends true
+	: Zero<Y> extends true
 	? Result
 	: Y extends [unknown, ...infer RestY]
 	? PowerOp<X, RestY, MultiplyOp<Result, X>>
@@ -71,7 +68,7 @@ export type Power<X extends unknown[], Y extends unknown[]> = Calculate<
 	PowerOp<X, Y>
 >;
 
-type ModOp<X extends unknown[], Y extends unknown[]> = IsZero<Y> extends true
+type ModOp<X extends unknown[], Y extends unknown[]> = Zero<Y> extends true
 	? never
 	: SubtractOp<X, Y> extends never
 	? X
@@ -84,10 +81,32 @@ export type Mod<X extends unknown[], Y extends unknown[]> = Calculate<
 type FactorialOp<
 	X extends unknown[],
 	Result extends unknown[] = [unknown]
-> = IsZero<X> extends true
+> = Zero<X> extends true
 	? Result
 	: X extends [unknown, ...infer RestX]
 	? FactorialOp<RestX, MultiplyOp<Result, X>>
 	: never;
 
 export type Factorial<X extends unknown[]> = Calculate<FactorialOp<X>>;
+
+type MinOp<X extends unknown[], Y extends unknown[]> = LessThan<
+	X,
+	Y
+> extends true
+	? X
+	: Y;
+
+export type Min<X extends unknown[], Y extends unknown[]> = Calculate<
+	MinOp<X, Y>
+>;
+
+type MaxOp<X extends unknown[], Y extends unknown[]> = GreaterThan<
+	X,
+	Y
+> extends true
+	? X
+	: Y;
+
+export type Max<X extends unknown[], Y extends unknown[]> = Calculate<
+	MaxOp<X, Y>
+>;

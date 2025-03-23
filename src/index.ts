@@ -3,6 +3,8 @@ import {
 	Add,
 	Divide,
 	Factorial,
+	Max,
+	Min,
 	Mod,
 	Multiply,
 	Power,
@@ -11,11 +13,11 @@ import {
 import {
 	GreaterThan,
 	GreaterThanOrEqual,
-	IsEqual,
-	IsEven,
-	IsInRange,
-	IsOdd,
-	IsZero,
+	Equal,
+	Even,
+	InRange,
+	Odd,
+	Zero,
 	LessThan,
 	LessThanOrEqual,
 } from "./predicates";
@@ -60,13 +62,21 @@ type _0Factorial = Factorial<Num<0>>; // 1
 type _1Factorial = Factorial<Num<1>>; // 1
 type _5Factorial = Factorial<Num<5>>; // 120
 
+// Min
+type _MinOf2And3 = Min<Num<2>, Num<3>>; // 2
+type _MinOf4And3 = Min<Num<4>, Num<3>>; // 3
+
+// Max
+type _MaxOf2And3 = Max<Num<2>, Num<3>>; // 3
+type _MaxOf4And3 = Max<Num<4>, Num<3>>; // 4
+
 /**
  * PREDICATES
  */
 
-// IsEqual
-type _4Equals4 = IsEqual<Num<4>, Num<4>>; // true
-type _4Equals5 = IsEqual<Num<4>, Num<5>>; // false
+// Equal
+type _4Equals4 = Equal<Num<4>, Num<4>>; // true
+type _4Equals5 = Equal<Num<4>, Num<5>>; // false
 
 // GreaterThan
 type _5GreaterThan3 = GreaterThan<Num<5>, Num<3>>; // true
@@ -88,21 +98,21 @@ type _3LEQ5 = LessThanOrEqual<Num<3>, Num<5>>; // true
 type _5LEQ5 = LessThanOrEqual<Num<5>, Num<5>>; // true
 type _7LEQ5 = LessThanOrEqual<Num<7>, Num<5>>; // false
 
-// IsZero
-type _0IsZero = IsZero<Num<0>>; // true
-type _5IsZero = IsZero<Num<5>>; // false
+// Zero
+type _0Zero = Zero<Num<0>>; // true
+type _5Zero = Zero<Num<5>>; // false
 
-// IsEven
-type _0IsEven = IsEven<Num<0>>; // true
-type _2IsEven = IsEven<Num<2>>; // true
-type _3IsEven = IsEven<Num<3>>; // false
+// Even
+type _0Even = Even<Num<0>>; // true
+type _2Even = Even<Num<2>>; // true
+type _3Even = Even<Num<3>>; // false
 
-// IsOdd
-type _3IsOdd = IsOdd<Num<3>>; // true
-type _4IsOdd = IsOdd<Num<4>>; // false
+// Odd
+type _3Odd = Odd<Num<3>>; // true
+type _4Odd = Odd<Num<4>>; // false
 
-// IsInRange
-type _5InRange3to10 = IsInRange<Num<5>, Num<3>, Num<10>>; // true
-type _5InRange5to10 = IsInRange<Num<5>, Num<5>, Num<10>>; // true
-type _5InRange0to5 = IsInRange<Num<5>, Num<0>, Num<5>>; // true
-type _5InRange10to20 = IsInRange<Num<5>, Num<10>, Num<20>>; // false
+// InRange
+type _5InRange3to10 = InRange<Num<5>, Num<3>, Num<10>>; // true
+type _5InRange5to10 = InRange<Num<5>, Num<5>, Num<10>>; // true
+type _5InRange0to5 = InRange<Num<5>, Num<0>, Num<5>>; // true
+type _5InRange10to20 = InRange<Num<5>, Num<10>, Num<20>>; // false

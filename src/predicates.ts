@@ -1,13 +1,13 @@
 import { Num } from "./number";
 import { Mod } from "./operations";
 
-export type IsEqual<X extends unknown[], Y extends unknown[]> = X extends Y
+export type Equal<X extends unknown[], Y extends unknown[]> = X extends Y
 	? Y extends X
 		? true
 		: false
 	: false;
 
-export type GreaterThan<X extends unknown[], Y extends unknown[]> = IsEqual<
+export type GreaterThan<X extends unknown[], Y extends unknown[]> = Equal<
 	X,
 	Y
 > extends true
@@ -25,13 +25,13 @@ export type GreaterThan<X extends unknown[], Y extends unknown[]> = IsEqual<
 export type GreaterThanOrEqual<
 	X extends unknown[],
 	Y extends unknown[]
-> = IsEqual<X, Y> extends true
+> = Equal<X, Y> extends true
 	? true
 	: GreaterThan<X, Y> extends true
 	? true
 	: false;
 
-export type LessThan<X extends unknown[], Y extends unknown[]> = IsEqual<
+export type LessThan<X extends unknown[], Y extends unknown[]> = Equal<
 	X,
 	Y
 > extends true
@@ -46,7 +46,7 @@ export type LessThan<X extends unknown[], Y extends unknown[]> = IsEqual<
 		: never
 	: never;
 
-export type LessThanOrEqual<X extends unknown[], Y extends unknown[]> = IsEqual<
+export type LessThanOrEqual<X extends unknown[], Y extends unknown[]> = Equal<
 	X,
 	Y
 > extends true
@@ -55,17 +55,13 @@ export type LessThanOrEqual<X extends unknown[], Y extends unknown[]> = IsEqual<
 	? true
 	: false;
 
-export type IsZero<X extends unknown[]> = X extends [] ? true : false;
+export type Zero<X extends unknown[]> = X extends [] ? true : false;
 
-export type IsEven<X extends unknown[]> = Mod<X, Num<2>> extends 0
-	? true
-	: false;
+export type Even<X extends unknown[]> = Mod<X, Num<2>> extends 0 ? true : false;
 
-export type IsOdd<X extends unknown[]> = Mod<X, Num<2>> extends 1
-	? true
-	: false;
+export type Odd<X extends unknown[]> = Mod<X, Num<2>> extends 1 ? true : false;
 
-export type IsInRange<
+export type InRange<
 	X extends unknown[],
 	RangeStart extends unknown[],
 	RangeEnd extends unknown[]
