@@ -2,7 +2,7 @@
 
 A library that performs arithmetic operations purely within TypeScript's type system, with calculations happening only during type checking in the TypeScript Language Server.
 
-## Limitations
+## Current Limitations
 
 - **Range Constraints**: Limited to numbers within the range of TypeScript's tuple length limit (currently 999)
 - **Number Types**: Does not handle negative numbers or floating-point numbers
