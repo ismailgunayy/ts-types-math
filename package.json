@@ -1,7 +1,7 @@
 {
 	"name": "ts-types-math",
 	"version": "1.0.0",
-	"description": "Math operations running on TS types",
+	"description": "Math operations running on TypeScript type system",
 	"author": "ismailgunayy",
 	"license": "MIT",
 	"main": "src/index.ts",
